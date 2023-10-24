@@ -1,0 +1,16 @@
+#include<stdio.h>
+int main(){
+    float height;
+    printf("Enter your height in cm: ");
+    scanf("%2f", &height);
+    if(height>150){
+        printf(" you are Dwarf\n");
+
+    }else if (height==150){
+        printf("your height is avrage\n");
+
+    }else if (height>=165) {
+        printf("you are tall ");
+    }
+    return 0;
+}
