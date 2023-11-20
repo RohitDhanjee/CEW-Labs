@@ -1,0 +1,132 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+//LAB3 Q1
+void swap(int *a ,int *b);
+int main () {
+int a =1,b=2;
+swap(&a,&b);
+printf("a=%d,b=%d",a,b);
+return 0;
+}
+void swap(int *a ,int *b){
+    int s=*a;
+    *a=*b;
+    *b=s;
+}
+
+
+
+//LAB03 Q2
+int main(){
+    char st[]={"Hello World"};
+    char *ptr=&st;
+    int size=strlen(st)-1;
+    char reversed_Arr[size];
+    char *ptr1=&reversed_Arr;
+    int i =0;
+    printf("Original String: %s\n",st);
+    while(ptr[size]<ptr){
+      ptr1[i]=*(ptr+size);
+        printf("%u\n",ptr[size]);
+        size--;
+        i++;
+    }
+    printf("Modified String: %s\n",reversed_Arr);
+return 0;}
+
+
+
+//LAB 03 Q3
+int main(){
+    int n;
+    int ele;
+    int *ptr;
+    printf("Enter No. of Elements of an ARRAY: ");
+    scanf("%d",&n);
+    int arr[n];
+    ptr=arr;
+    for (int i=0;i<n;i++){
+        printf("Enter Your %d Element: ",i+1);
+        scanf("%d",&ele);
+        *(ptr+i)=ele;
+    }
+    printf("Your Array: ");
+    for (int i =0;i<n;i++){
+    printf("%d ",*(ptr+i));
+    }
+}
+
+
+
+//LAB 03 Q#4
+ Function to search for an element in an array using pointers
+int *search(int *arr, int size, int key) {
+    int *ptr = NULL;
+
+    for (int i = 0; i < size; i++) {
+        if (*arr == key) {
+            ptr = arr;
+            break;
+        }
+        arr++; // Move the pointer to the next element in the array
+    }
+
+    return ptr;
+}
+
+int main() {
+    int arr[] = {2, 5, 8, 12, 18, 23, 27, 31, 35};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int key = 35;
+    int *result = search(arr, size, key);
+
+    if (result != NULL) {
+        printf("Element found at index: %ld\n", result - arr);
+    } else {
+        printf("Element not found in the array.\n");
+    }
+
+    return 0;}
+
+
+
+//lab 03 q#5
+void addMatrices(int *mat1, int *mat2, int *result, int rows, int cols) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            // Accessing elements using pointer arithmetic
+            *(result + i * cols + j) = *(mat1 + i * cols + j) + *(mat2 + i * cols + j);
+        }
+    }
+}
+
+
+void displayMatrix(int *mat, int rows, int cols) {
+    printf("Resultant Matrix:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            printf("%d ", *(mat + i * cols + j));
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int mat1[3][3] = {{1, 2, 3},
+                      {4, 5, 6},
+                      {7, 8, 9}};
+
+    int mat2[3][3] = {{9, 8, 7},
+                      {6, 5, 4},
+                      {3, 2, 1}};
+
+    int rows = 3, cols = 3;
+    int result[rows][cols];
+
+    addMatrices(*mat1, *mat2, *result, rows, cols);
+    displayMatrix(*result, rows, cols);
+
+    return 0;
+}
